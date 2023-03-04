@@ -1,11 +1,17 @@
+""" Contains special exceptions that control gameplay"""
+
+
 class GameOver(Exception):
+    """ The end of the game and recording the score """
     def __init__(self, score):
+        """Creating attribute score"""
         self.score = score
 
     def save_score(self):
-        with open("scores.txt", "a") as f:
-            f.write(f"{self.score}/n")
+        """ Implemented method to save the final score """
+        with open("scores.txt", "a", encoding="utf8") as file:
+            file.write(self.score)
 
 
 class EnemyDown(Exception):
-    pass
+    """ Defeat the enemy """

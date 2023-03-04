@@ -29,20 +29,28 @@ class Player:
     def fight(attack, defence):
         if attack == defence:
             return 0
-        elif (attack == 1 and defence == 2) or (attack == 2 and defence == 3) or (attack == 3 and defence == 1):
+        if (attack == 1 and defence == 2) or\
+                (attack == 2 and defence == 3) or\
+                (attack == 3 and defence == 1):
             return 1
-        else:
-            return -1
+        return -1
 
     def decrease_lives(self):
         self.lives -= 1
         if self.lives == 0:
-            return GameOver("Game Over: You lost all your lives. ")
+            return GameOver()
 
     def attack(self, enemy_obj):
-        attack = int(input("Choose your attack(1, 2, 3):\n"))
-        enemy_defence = enemy_obj.select_attack()
-        result = Player.fight(attack, enemy_defence)
+        while True:
+            try:
+                attack = int(input(f"{self.name}, choose your attack(1, 2, 3):\n"))
+                if attack not in self.allowed_attacks:
+                    raise ValueError("Invalid attack choice.")
+                break
+            except ValueError as e:
+                print(f"Invalid input. {e}")
+        enemy = enemy_obj.select_attack()
+        result = Player.fight(attack, enemy)
         if result == 0:
             print("It's draw!")
         elif result == 1:
@@ -53,9 +61,16 @@ class Player:
             print("You missed!")
             
     def defence(self, enemy_obj):
-        enemy_attack = enemy_obj.select_attack()
-        defence = int(input("Choose your defence(1, 2, 3):\n"))
-        result = Player.fight(enemy_attack, defence)
+        while True:
+            try:
+                defence = int(input(f"{self.name}, choose your defence(1, 2, 3):\n"))
+                if defence not in self.allowed_attacks:
+                    raise ValueError("Invalid defence choice.")
+                break
+            except ValueError as e:
+                print(f"Invalid input. {e}")
+        attack = enemy_obj.select_attack()
+        result = Player.fight(attack, defence)
         if result == 0:
             print("It's draw!")
         elif result == 1:

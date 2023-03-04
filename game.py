@@ -1,8 +1,10 @@
+"""for the code to work"""
 from models import Player, Enemy
 from game_exceptions import GameOver, EnemyDown
 
 
 def play():
+    """playing game"""
     name = input("Enter your name: ")
     player = Player(name)
     level = 1
@@ -16,8 +18,8 @@ def play():
         except EnemyDown:
             print("You defeated the enemy!")
             level += 1
-        except GameOver as e:
-            print(f"Game over: Your final score is {e.score}")
+        except GameOver as enemy:
+            print(f"Game over: Your final score is {enemy.score}")
             break
 
 
@@ -28,4 +30,3 @@ if __name__ == '__main__':
         pass
     finally:
         print("Good Bye")
-
