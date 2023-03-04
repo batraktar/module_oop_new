@@ -10,9 +10,11 @@ class Enemy:
 
     @staticmethod
     def select_attack():
+        """ choice to attack the enemy """
         return random.randint(1, 3)
 
     def decrease_lives(self):
+        """ enemy lives """
         self.lives -= 1
         if self.lives == 0:
             raise EnemyDown()
@@ -27,6 +29,7 @@ class Player:
 
     @staticmethod
     def fight(attack, defence):
+        """ method w"""
         if attack == defence:
             return 0
         if (attack == 1 and defence == 2) or\
@@ -38,19 +41,20 @@ class Player:
     def decrease_lives(self):
         self.lives -= 1
         if self.lives == 0:
-            return GameOver()
+            return GameOver("")
 
     def attack(self, enemy_obj):
+        """ choose player """
         while True:
             try:
                 attack = int(input(f"{self.name}, choose your attack(1, 2, 3):\n"))
                 if attack not in self.allowed_attacks:
                     raise ValueError("Invalid attack choice.")
                 break
-            except ValueError as e:
-                print(f"Invalid input. {e}")
-        enemy = enemy_obj.select_attack()
-        result = Player.fight(attack, enemy)
+            except ValueError as enemy:
+                print(f"Invalid input. {enemy}")
+        defence = enemy_obj.select_attack()
+        result = Player.fight(attack, defence)
         if result == 0:
             print("It's draw!")
         elif result == 1:
@@ -67,8 +71,8 @@ class Player:
                 if defence not in self.allowed_attacks:
                     raise ValueError("Invalid defence choice.")
                 break
-            except ValueError as e:
-                print(f"Invalid input. {e}")
+            except ValueError as enemy:
+                print(f"Invalid input. {enemy}")
         attack = enemy_obj.select_attack()
         result = Player.fight(attack, defence)
         if result == 0:

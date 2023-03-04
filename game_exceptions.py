@@ -4,7 +4,7 @@
 class GameOver(Exception):
     """ The end of the game and recording the score """
     def __init__(self, score):
-        """Creating attribute score"""
+        """ Creating attribute score """
         self.score = score
 
     def save_score(self):

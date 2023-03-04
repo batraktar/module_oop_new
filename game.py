@@ -1,10 +1,10 @@
-"""for the code to work"""
+""" for the code to work """
 from models import Player, Enemy
 from game_exceptions import GameOver, EnemyDown
 
 
 def play():
-    """playing game"""
+    """ playing game """
     name = input("Enter your name: ")
     player = Player(name)
     level = 1
