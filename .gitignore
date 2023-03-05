@@ -1,6 +1,4 @@
+pyvenv.cfg
 Lib
 Scripts
-pyvenv.cfg
-.pyc
-.gitignore
-.idea
+__pycache__/
