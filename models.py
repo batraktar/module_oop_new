@@ -11,7 +11,7 @@ class Enemy:
     @staticmethod
     def select_attack():
         """ choice to attack the enemy """
-        return 1
+        return random.randint(1, 3)
 
     def decrease_lives(self):
         """ enemy lives """
@@ -77,7 +77,7 @@ class Player:
                     raise ValueError("Invalid defence choice. Please enter a number from 1-3.")
                 break
             except ValueError:
-                print(f"Invalid input.")
+                print("Invalid input.")
         attack = enemy_obj.select_attack()
         result = self.fight(attack, defence)
         if result == 0:
