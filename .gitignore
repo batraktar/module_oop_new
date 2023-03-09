@@ -1,4 +1,6 @@
-# created by virtualenv automatically
+pyvenv.cfg
 Lib
 Scripts
-pyvenv.cfg
+__pycache__/
+.idea/
+.gitignore

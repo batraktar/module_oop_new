@@ -1,0 +1,2 @@
+NAME: max| SCORE: 4| MODE: normal
+NAME: max| SCORE: 15| MODE: hard
